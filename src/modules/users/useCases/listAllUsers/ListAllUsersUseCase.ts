@@ -9,6 +9,7 @@ class ListAllUsersUseCase {
   constructor(private usersRepository: IUsersRepository) {}
 
   execute({ user_id }: IRequest): User[] {
+
     const user = this.usersRepository.findById(user_id);
 
     if (!user) {
@@ -20,7 +21,7 @@ class ListAllUsersUseCase {
     } 
 
     const users = this.usersRepository.list();
-
+    
     return users;
     
   }
