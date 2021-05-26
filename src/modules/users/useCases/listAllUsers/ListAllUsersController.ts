@@ -8,13 +8,10 @@ class ListAllUsersController {
   handle(request: Request, response: Response): Response {
     
     try {
-      const  { user_id } = request.params;
+      const { user_id } = request.headers;
 
-      if (!user_id) {
-        return response.status(400).json({ error: "User not found!"})    
-      }
-
-      const all = this.listAllUsersUseCase.execute({user_id})
+      const all = this.listAllUsersUseCase.execute({ user_id: String(user_id) })
+      
       return response.status(200).json(all);
 
     } catch (error) {
