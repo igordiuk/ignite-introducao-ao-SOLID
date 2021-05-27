@@ -11,7 +11,7 @@ class TurnUserAdminController {
       const { user_id } = request.params;
 
       if (!user_id) {
-        return response.status(404).json({ error: 'User nor found' })
+        return response.status(404).json({ error: 'User not found' })
       }
 
       const user = this.turnUserAdminUseCase.execute({user_id})
